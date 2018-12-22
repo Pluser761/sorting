@@ -6,6 +6,8 @@
 #include <time.h>
 #include <fstream>
 
+//unicode fix
+
 using namespace std;
 
 #define mPROGRAMM1 "\n [1] - Об Авторе\n" 
