@@ -244,8 +244,8 @@ int main() {
 			cout << "\n" << endl;
 
 			cout << "*Сортировка методом прямого обмена " << endl;
-			tempmas = t_arr(mas, n);
-			arr[2] = func3(tempmas, n);
+			//tempmas = t_arr(mas, n);
+			arr[2] = func3(mas, n);
 			cout << " Время выполнения,c: " << arr[2].istime << endl;
 			cout << " Количество обменов: " << arr[2].ischange << endl;
 			cout << " Затраченное ОЗУ   : " << arr[2].ismem << endl;
@@ -266,7 +266,8 @@ int main() {
 
 	cout << "\n";
 	cout << "   Вы вышли из программы " << endl;
-	cout << "\n";
-	system("pause");
+	Sleep(750);
+	//cout << "\n";
+	//system("pause");
 	return 0;
 }
