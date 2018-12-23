@@ -35,10 +35,10 @@ void printarray(int arg[], int length) {
 
 
 sorting func1(int arg[], int size) {
-
-	unsigned int start_time = clock();
 	int n = 0;
 	sorting ret;
+
+	unsigned int start_time = clock();
 
 	for (int i = 1; i < size; i++)
 	{
@@ -60,9 +60,10 @@ sorting func1(int arg[], int size) {
 }
 
 sorting func2(int arg[], int size) {
-	unsigned int start_time = clock();
 	int n = 0, min;
 	sorting ret;
+
+	unsigned int start_time = clock();
 
 	for (int i = 0; i < size - 1; i++) {
 		min = i;
@@ -97,6 +98,12 @@ sorting func3(int arg[], int size) {
 	ret.ischange = n;
 	ret.ismem = 0;
 	return ret;
+}
+
+int *t_arr(int arr[], int size) {
+	int *res = new int[100000];
+	memcpy(res, arr, 100000 * sizeof(int));
+	return res;
 }
 
 void the_best(sorting arr[])
@@ -163,7 +170,7 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 	int choose = 0, choose1 = 0, n = 0, ik = 0, im = 0;
-	int mas[100000], tempmas[100000];
+	int mas[100000], *tempmas;
 	sorting arr[3];
 	ifstream ifs("mas.txt");
 
@@ -221,22 +228,24 @@ int main() {
 			cout << "\n" << endl;
 
 			cout << "*Сортировка методом прямого включения " << endl;
-			
-			arr[0] = func1(mas, n);
+			tempmas = t_arr(mas, n);
+			arr[0] = func1(tempmas, n);
 			cout << " Время выполнения,c: " << arr[0].istime << endl;
 			cout << " Количество обменов: " << arr[0].ischange << endl;
 			cout << " Затраченное ОЗУ   : " << arr[0].ismem << endl;
 			cout << "\n" << endl;
 
 			cout << "*Сортировка методом прямого выбора " << endl;
-			arr[1] = func2(mas, n);
+			tempmas = t_arr(mas, n);
+			arr[1] = func2(tempmas, n);
 			cout << " Время выполнения,c: " << arr[1].istime << endl;
 			cout << " Количество обменов: " << arr[1].ischange << endl;
 			cout << " Затраченное ОЗУ   : " << arr[1].ismem << endl;
 			cout << "\n" << endl;
 
 			cout << "*Сортировка методом прямого обмена " << endl;
-			arr[2] = func3(mas, n);
+			tempmas = t_arr(mas, n);
+			arr[2] = func3(tempmas, n);
 			cout << " Время выполнения,c: " << arr[2].istime << endl;
 			cout << " Количество обменов: " << arr[2].ischange << endl;
 			cout << " Затраченное ОЗУ   : " << arr[2].ismem << endl;
