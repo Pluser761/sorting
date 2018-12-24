@@ -55,7 +55,7 @@ sorting func1(int arg[], int size) {
 
 	ret.istime = clock() - start_time;
 	ret.ischange = n;
-	ret.ismem = 0;
+	ret.ismem = sizeof(int) * 4;
 	return ret;
 }
 
@@ -74,7 +74,7 @@ sorting func2(int arg[], int size) {
 
 	ret.istime = clock() - start_time;
 	ret.ischange = n;
-	ret.ismem = 0;
+	ret.ismem = sizeof(int) * 4;
 	return ret;
 }
 
@@ -94,7 +94,7 @@ sorting func3(int arg[], int size) {
 
 	ret.istime = clock() - start_time;
 	ret.ischange = n;
-	ret.ismem = 0;
+	ret.ismem = sizeof(int) * 3;
 	return ret;
 }
 
