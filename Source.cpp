@@ -18,6 +18,7 @@ using namespace std;
 
 #define mPROGRAMM2_1 "    [1] - Автогенерация массива\n"
 #define mPROGRAMM2_2 "\n    [2] - Считать из файла\n"
+#define SIZE 100000
 
 struct sorting
 {
@@ -26,10 +27,8 @@ struct sorting
 };
 
 void printarray(int arg[], int length) {
-	for (int index = 0; index < length; index++)
-		arg[index] = rand() % 100;
-	for (int index = 0; index < length; index++)
-		cout << ' ' << arg[index];
+	for (int index = 0; index < length; index++) arg[index] = rand() % 100;
+	//for (int index = 0; index < length; index++) cout << ' ' << arg[index];
 	cout << endl;
 }
 
@@ -51,6 +50,7 @@ sorting func1(int arg[], int size) {
 			n++;
 		}
 		arg[index] = value;
+		n++;
 	}
 
 	ret.istime = clock() - start_time;
@@ -67,11 +67,9 @@ sorting func2(int arg[], int size) {
 
 	for (int i = 0; i < size - 1; i++) {
 		min = i;
-		for (int j = i + 1; j < size; j++) {
-			if (arg[j] < arg[min]) min = j;
-			n++;
-		}
+		for (int j = i + 1; j < size; j++) if (arg[j] < arg[min]) min = j;
 		swap(arg[i], arg[min]);
+		n++;
 	}
 
 	ret.istime = clock() - start_time;
@@ -101,8 +99,8 @@ sorting func3(int arg[], int size) {
 }
 
 int *t_arr(int arr[], int size) {
-	int *res = new int[100000];
-	memcpy(res, arr, 100000 * sizeof(int));
+	int *res = new int[SIZE];
+	memcpy(res, arr, SIZE * sizeof(int));
 	return res;
 }
 
@@ -170,7 +168,7 @@ int main() {
 
 	setlocale(LC_ALL, "Russian");
 	int choose = 0, choose1 = 0, n = 0, ik = 0, im = 0;
-	int mas[100000], *tempmas;
+	int mas[SIZE], *tempmas;
 	sorting arr[3];
 	ifstream ifs("mas.txt");
 
@@ -252,7 +250,7 @@ int main() {
 			cout << "\n" << endl;
 
 			cout << " Отсортированный массив :";
-			for (int i = 0; i < n; i++) cout << ' ' << mas[i];
+			//for (int i = 0; i < n; i++) cout << ' ' << mas[i];
 			cout << endl;
 
 			the_best(arr);
